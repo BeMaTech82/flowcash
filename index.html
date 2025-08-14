@@ -174,5 +174,95 @@
     </div>
     <p class="mt-6 text-slate-600">Contact : <span class="font-semibold">Benoit — Fondateur</span> • Demo & datas sur demande</p>
   </section>
+  
+  
+  <!-- === Slide Deck: CSS + JS (no deps) === -->
+<style id="slides-css">
+  html.js-slides, html.js-slides body{height:100%;overflow:hidden}
+  html.js-slides .slide{display:none}
+  html.js-slides .slide.active{display:flex}
+  #deckHUD{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
+    background:rgba(15,23,42,.85);color:#fff;border-radius:9999px;
+    padding:.4rem .75rem;font:500 12px/1.3 Inter,system-ui,Segoe UI,Roboto,Arial}
+  #deckHUD .btn{cursor:pointer;margin:0 .5rem;user-select:none}
+  #deckProg{position:fixed;left:0;right:0;bottom:0;height:3px;background:rgba(2,8,23,.15)}
+  #deckProg>i{display:block;height:100%;width:0;background:#16a34a;transition:width .2s ease}
+</style>
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  if(!slides.length) return;
+  document.documentElement.classList.add('js-slides');
+
+  // Go to slide from hash (#1, #2, ...)
+  let idx=0;
+  function fromHash(){
+    const n=parseInt(location.hash.replace('#',''),10);
+    if(!isNaN(n) && n>=1 && n<=slides.length) idx=n-1;
+  }
+  fromHash();
+
+  // Create HUD (controls + progress)
+  const hud=document.createElement('div');
+  hud.id='deckHUD';
+  hud.innerHTML=`<span class="btn" id="prevBtn">◀</span>
+                 <span id="hudCount">1/${slides.length}</span>
+                 <span class="btn" id="nextBtn">▶</span>
+                 <span class="btn" title="Fullscreen (F)" id="fsBtn">⛶</span>
+                 <span class="btn" title="Scroll mode (S)" id="scrollBtn">↕</span>`;
+  document.body.appendChild(hud);
+  const hudCount=document.getElementById('hudCount');
+
+  const prog=document.createElement('div');
+  prog.id='deckProg'; prog.innerHTML='<i></i>';
+  document.body.appendChild(prog);
+
+  function show(i){
+    idx=(i+slides.length)%slides.length;
+    slides.forEach((s,k)=>s.classList.toggle('active',k===idx));
+    hudCount.textContent=`${idx+1}/${slides.length}`;
+    prog.firstElementChild.style.width=((idx+1)/slides.length*100)+'%';
+    history.replaceState(null,'','#'+(idx+1));
+  }
+  function next(){ show(idx+1); }
+  function prev(){ show(idx-1); }
+
+  window.addEventListener('keydown',e=>{
+    const tag=(document.activeElement||{}).tagName||'';
+    if(['INPUT','TEXTAREA','SELECT'].includes(tag)) return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); next(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+    else if(e.key.toLowerCase()==='f'){ toggleFS(); }
+    else if(e.key.toLowerCase()==='s'){ toggleScroll(); }
+  });
+  window.addEventListener('hashchange',()=>{ fromHash(); show(idx); });
+
+  function toggleFS(){
+    const d=document, el=d.documentElement;
+    if(!d.fullscreenElement){ (el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen||el.mozRequestFullScreen).call(el); }
+    else { (d.exitFullscreen||d.webkitExitFullscreen||d.msExitFullscreen||d.mozCancelFullScreen).call(d); }
+  }
+  function toggleScroll(){
+    const root=document.documentElement;
+    if(root.classList.contains('js-slides')){
+      root.classList.remove('js-slides'); slides.forEach(s=>s.classList.add('active'));
+    } else {
+      root.classList.add('js-slides'); show(idx); window.scrollTo(0,0);
+    }
+  }
+  document.getElementById('prevBtn').onclick=prev;
+  document.getElementById('nextBtn').onclick=next;
+  document.getElementById('fsBtn').onclick=toggleFS;
+  document.getElementById('scrollBtn').onclick=toggleScroll;
+
+  // First render
+  show(idx);
+})();
+</script>
+<!-- === /Slide Deck === -->
+
+
 </body>
 </html>
