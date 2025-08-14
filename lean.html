@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FlowCash — Lean Business Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    .container{max-width:1024px}
+    .kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    @media (max-width:768px){.kpi{grid-template-columns:1fr}}
+    a.section-link{color:#0ea5e9}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="container mx-auto px-6 py-8 flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">FlowCash — Lean Business Plan</h1>
+      <p class="text-slate-600 mt-1">SaaS d'encaissement automatisé : Peppol, relances intelligentes, Open Banking (AIS), Pay‑by‑Bank, preuves légales (LRE/TSA), affacturage.</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="./index.html" class="rounded-xl px-3 py-2 text-sm bg-white ring-1 ring-slate-200 hover:bg-slate-100">Retour au deck</a>
+      <button onclick="window.print()" class="rounded-xl px-3 py-2 text-sm bg-slate-900 text-white hover:bg-slate-800">Imprimer / PDF</button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 pb-24">
+    <!-- TOC -->
+    <section class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-lg font-semibold">Sommaire</h2>
+      <nav class="mt-3 grid md:grid-cols-3 gap-2 text-sm">
+        <a class="section-link" href="#exec">1. Executive summary</a>
+        <a class="section-link" href="#problem">2. Problème</a>
+        <a class="section-link" href="#solution">3. Solution & différenciation</a>
+        <a class="section-link" href="#market">4. Marché & clients</a>
+        <a class="section-link" href="#model">5. Modèle & pricing</a>
+        <a class="section-link" href="#gtm">6. Go‑to‑Market</a>
+        <a class="section-link" href="#ops">7. Opérations & tech</a>
+        <a class="section-link" href="#reg">8. Conformité</a>
+        <a class="section-link" href="#swot">9. SWOT</a>
+        <a class="section-link" href="#roadmap">10. Roadmap 0–90 jours</a>
+        <a class="section-link" href="#kpi">11. KPI & cibles</a>
+        <a class="section-link" href="#finance">12. Photo financière</a>
+        <a class="section-link" href="#risks">13. Risques & parades</a>
+        <a class="section-link" href="#needs">14. Besoins & jalons</a>
+      </nav>
+    </section>
+
+    <!-- 1. Executive summary -->
+    <section id="exec" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">1) Executive summary</h2>
+      <p class="mt-2">FlowCash automatise l'encaissement B2B de A à Z : émission/réception e‑factures <strong>Peppol</strong>, <strong>relances</strong> avec <strong>Pay‑by‑Bank</strong>, <strong>vérification bancaire</strong> via <strong>Open Banking (AIS)</strong>, et, si nécessaire, preuves légales (<strong>LRE</strong> qualifiée eIDAS et <strong>horodatage</strong> qualifié). Un bouton d'<strong>affacturage</strong> permet d'obtenir le cash immédiatement sur les créances éligibles.</p>
+      <div class="kpi mt-4">
+        <div class="bg-slate-50 rounded-xl p-4"><div class="text-2xl font-bold">DSO ↓ 10 j</div><div class="text-slate-600 text-sm">Objectif pilote : réduire le délai moyen de paiement</div></div>
+        <div class="bg-slate-50 rounded-xl p-4"><div class="text-2xl font-bold">≥ 90 %</div><div class="text-slate-600 text-sm">Paiements auto‑rapprochés (RF/IBAN/montant)</div></div>
+        <div class="bg-slate-50 rounded-xl p-4"><div class="text-2xl font-bold">GM ≈ 50 %</div><div class="text-slate-600 text-sm">Mix 25 Basic / 20 Pro / 5 Scale</div></div>
+      </div>
+    </section>
+
+    <!-- 2. Problème -->
+    <section id="problem" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">2) Problème</h2>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>DSO élevé, retards récurrents, litiges de "non‑réception".</li>
+        <li>Relances peu probantes (pixels d'email ≠ preuve légale).</li>
+        <li>Rapprochement bancaire manuel coûteux et source d'erreurs.</li>
+        <li>Escalade juridique (mise en demeure / LR papier) non outillée ; affacturage déconnecté.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Solution -->
+    <section id="solution" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">3) Solution & différenciation</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-2">
+        <div>
+          <h3 class="font-semibold">Chaîne complète</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Emission/réception e‑factures <strong>Peppol</strong> (UBL/Factur‑X).</li>
+            <li><strong>Relances</strong> multi‑étapes + lien <strong>Pay‑by‑Bank</strong>.</li>
+            <li><strong>Open Banking (AIS)</strong> : lecture mouvements & matching automatique.</li>
+            <li><strong>LRE</strong> qualifiée & <strong>horodatage</strong> qualifié en option (eIDAS).</li>
+            <li><strong>Affacturage</strong> intégré : bouton "Financer cette facture".</li>
+            <li>Journal d'audit scellé & export dossier de preuve.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Différenciation</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Preuve légale intégrée (réduction des litiges).</li>
+            <li>Focus encaissement (pas une énième app de facture).</li>
+            <li>Tarifs simples + options à l'acte (coût perçu juste).</li>
+            <li>Architecture évènementielle, API & webhooks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Marché & clients -->
+    <section id="market" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">4) Marché & clients</h2>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>ICP 1</strong> : TPE/PME services & BTP (50–3 000 docs/mois, 1–3 comptes).</li>
+        <li><strong>ICP 2</strong> : Cabinets comptables (effet portefeuille, revente).</li>
+        <li><strong>ICP 3</strong> : Agences/ESN (contrats récurrents, enjeu de cash).</li>
+      </ul>
+      <p class="text-slate-600 text-sm mt-2">Doute volontaire : tolérance au changement vs. co‑pilotage d'encaissement → à tester en pilote.</p>
+    </section>
+
+    <!-- 5. Modèle & pricing -->
+    <section id="model" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">5) Modèle & pricing</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-2">
+        <div>
+          <h3 class="font-semibold">Abonnements (MRR)</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li><strong>Basic</strong> 69 € — 200 docs/mois, 1 compte (AIS).</li>
+            <li><strong>Pro</strong> 199 € — 1 000 docs/mois, 3 comptes.</li>
+            <li><strong>Scale</strong> 499 € — 3 000 docs/mois, 5 comptes.</li>
+            <li>Dépassements : 0,15 / 0,12 / 0,10 € / doc.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Options (upsell)</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>LRE qualifiée : 5,90 € / envoi (packs dégressifs).</li>
+            <li>Horodatage qualifié : 0,49 € / évènement.</li>
+            <li>Lettre recommandée papier : 9,90 € / envoi.</li>
+            <li>Affacturage : rev‑share ~0,25–0,5 % du montant financé.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Go-to-Market -->
+    <section id="gtm" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">6) Go‑to‑Market</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-2">
+        <div>
+          <h3 class="font-semibold">Canaux</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Partenariats cabinets comptables (revendeur/co‑branding).</li>
+            <li>Intégrateurs ERP/compta (co‑marketing).</li>
+            <li>Vente directe : démo 20 min orientée KPI & ROI.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Offres & message</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Pack "Prêt pour e‑invoicing" (Peppol + RF + relances).</li>
+            <li>Simulateur ROI public + cas clients chiffrés.</li>
+            <li>Parcours affacturage : éligibilité auto, offre en 1 clic.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Opérations & tech -->
+    <section id="ops" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">7) Opérations & tech</h2>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Stack</strong> : PHP 8.4 (core UBL/Peppol) + Go (workers I/O), MariaDB, Redis/Queue.</li>
+        <li><strong>Event bus</strong> : document.*, bank.match.*, eidas.*</li>
+        <li><strong>Sécurité</strong> : secrets segmentés, chiffrement at‑rest, journaux d'audit scellés, TST stockés.</li>
+        <li><strong>Vendors</strong> : AP Peppol, AIS, LRE qualifiée, TSA qualifié (multi‑sourcing).</li>
+      </ul>
+    </section>
+
+    <!-- 8. Conformité -->
+    <section id="reg" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">8) Conformité</h2>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>eIDAS : LRE qualifiée & horodatage qualifié (valeur probante UE).</li>
+        <li>GDPR : minimisation, base légale, rétention, DPA, régions UE.</li>
+        <li>E‑invoicing : EN 16931/UBL/Factur‑X, Peppol BIS 3.0 via AP certifié.</li>
+      </ul>
+    </section>
+
+    <!-- 9. SWOT -->
+    <section id="swot" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">9) SWOT</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-2">
+        <div>
+          <h3 class="font-semibold">Forces</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Preuve légale intégrée (LRE + TSA).</li>
+            <li>Chaîne complète invoice→cash.</li>
+            <li>Tarification simple + options à l'acte.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Faiblesses</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Dépendance fournisseurs (AP/AIS/LRE/TSA).</li>
+            <li>Marge tendue sur très gros volumes sans négo AP.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Opportunités</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Généralisation e‑invoicing UE.</li>
+            <li>Affacturage intégré (NRR+).</li>
+            <li>Partenariats cabinets & intégrateurs.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Menaces</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Variations réglementaires / prix vendors.</li>
+            <li>Concurrents ERP/compta activant Peppol/relances.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Roadmap -->
+    <section id="roadmap" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">10) Roadmap 0–90 jours</h2>
+      <ol class="list-decimal list-inside mt-2 space-y-1">
+        <li><strong>J0–30</strong> : MVP — Peppol + AIS + relances + Pay‑by‑Bank + LRE/TSA + journal de preuve.</li>
+        <li><strong>J31–60</strong> : Pilotes (10–20), packs LRE/QTS, métriques en prod, négo AP (paliers).</li>
+        <li><strong>J61–90</strong> : Connecteurs compta majeurs, bouton affacturage, offre Entreprise.</li>
+      </ol>
+    </section>
+
+    <!-- 11. KPI -->
+    <section id="kpi" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">11) KPI & cibles</h2>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>% factures via Peppol ; % relances efficaces ; % paiements auto‑matchés.</li>
+        <li>DSO 30/60/90 ; cash collecté/semaine.</li>
+        <li>MRR / ARPU / NRR / churn ; GM% ; marge/client.</li>
+        <li>Affacturage : attach rate, montant financé/mois, rev‑share.</li>
+      </ul>
+      <div class="kpi mt-4">
+        <div class="bg-slate-50 rounded-xl p-4"><div class="text-2xl font-bold">30</div><div class="text-slate-600 text-sm">Clients payants à 90 jours</div></div>
+        <div class="bg-slate-50 rounded-xl p-4"><div class="text-2xl font-bold">≥ 45 €</div><div class="text-slate-600 text-sm">Marge / client / mois</div></div>
+        <div class="bg-slate-50 rounded-xl p-4"><div class="text-2xl font-bold">≥ 90 %</div><div class="text-slate-600 text-sm">Paiements auto‑matchés</div></div>
+      </div>
+    </section>
+
+    <!-- 12. Finance snapshot -->
+    <section id="finance" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">12) Photo financière (ex. cohorte 50)</h2>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Mix : 25 Basic / 20 Pro / 5 Scale → <strong>MRR ≈ 11,5 k€</strong>.</li>
+        <li><strong>GM ≈ 50 %</strong> ; <strong>ARPU ≈ 229 €</strong> ; <strong>Marge/client ≈ 115 €</strong>.</li>
+        <li>Seuil rentabilité (hors salaire fondateur) ≈ 20 clients ; équilibre avec 4 k€/mois ≈ 96 clients.</li>
+        <li>Point de vigilance : négocier coût/doc AP pour Scale/Entreprise.</li>
+      </ul>
+    </section>
+
+    <!-- 13. Risques & parades -->
+    <section id="risks" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">13) Risques & parades</h2>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Prix vendors</strong> ↑ : plafonds contractuels, multi‑fournisseurs, bench trimestriel.</li>
+        <li><strong>Usage LRE</strong> trop élevé : limiter à l’ultime relance, packs, Pay‑by‑Bank avant escalade.</li>
+        <li><strong>Marge Scale</strong> : plan Entreprise indexé coût AP, ou ajustement tarif.</li>
+        <li><strong>Conformité</strong> : TSL eIDAS, DPA, régions UE, audit logs.</li>
+      </ul>
+    </section>
+
+    <!-- 14. Besoins & jalons -->
+    <section id="needs" class="mt-8 bg-white rounded-2xl p-6 ring-1 ring-slate-200">
+      <h2 class="text-xl font-bold">14) Besoins & jalons</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-2">
+        <div>
+          <h3 class="font-semibold">Partenariats</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>AP Peppol, AIS, LRE qualifiée, TSA qualifié (clauses export, plafonds, SLA).</li>
+            <li>Cabinets comptables (revendeur / co‑branding).</li>
+            <li>Factors PME pour affacturage (rev‑share 10–30 %).</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Financement (scénarios)</h3>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Bootstrapped 0–50 k€ : vendors + ventes initiales.</li>
+            <li>Seed ciblée 200–300 k€ : 12–18 mois (tech, GTM, connecteurs).</li>
+            <li>Objectif 12 mois : ≥ 200 clients, MRR ≥ 40 k€, GM ≥ 55 %.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-8 text-center text-slate-500 text-sm">© FlowCash — Lean plan généré pour usage présentation & exécution. Imprimez en PDF pour diffusion.</footer>
+  </main>
+</body>
+</html>
