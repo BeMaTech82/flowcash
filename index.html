@@ -1,300 +1,1238 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FlowPay — Deck Investisseurs (8 slides)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial}
-    .slide{page-break-after:always; min-height:100vh; display:flex; flex-direction:column; justify-content:center}
-    .kpi{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem}
-    @media print{body{background:white} .slide{page-break-after: always; min-height:auto}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowPay - Vos factures électroniques se paient toutes seules</title>
+    <meta name="description" content="Automatisez vos devis, factures et relances — restez conforme à la loi 2025 et concentrez-vous sur votre métier. Encaissement 2x plus rapide.">
+    
+    <!-- SEO Meta -->
+    <meta property="og:title" content="FlowPay - Vos factures électroniques se paient toutes seules">
+    <meta property="og:description" content="Automatisez vos devis, factures et relances — restez conforme à la loi 2025 et concentrez-vous sur votre métier.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #2C3E50;
+            background: #FAFBFC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: #FFFFFF;
+            border-bottom: 1px solid #E1E8ED;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1B365D;
+            letter-spacing: -0.5px;
+        }
+
+        .trust-indicators {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            font-size: 14px;
+            color: #5A6C7D;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1B365D 0%, #2C5282 100%);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, rgba(255,255,255,0.08) 0%, transparent 30%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FCD34D, #F59E0B);
+            color: #92400E;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            border: 1px solid #FBBF24;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero .simple-explanation {
+            font-size: 18px;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 40px;
+            line-height: 1.4;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            margin-bottom: 64px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            padding: 20px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            border: none;
+        }
+
+        .hero-button:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 0;
+            padding-top: 0;
+            border: none;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            min-width: 160px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #FBBF24;
+            display: block;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.9);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Positioning Section */
+        .positioning {
+            background: #F8FAFB;
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1B365D;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #5A6C7D;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .process-step {
+            background: #FFFFFF;
+            padding: 40px 32px;
+            border-radius: 12px;
+            border: 1px solid #E1E8ED;
+            text-align: center;
+            flex: 1;
+            max-width: 280px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .process-step.highlight {
+            background: #2E5BBA;
+            color: white;
+            border-color: #2E5BBA;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(46, 91, 186, 0.2);
+            position: relative;
+        }
+
+        .process-step.highlight::before {
+            content: "FLOWPAY AGIT ICI";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1B365D;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .process-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background: #F8FAFB;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .process-step.highlight .process-icon {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .process-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1B365D;
+        }
+
+        .process-step.highlight .process-title {
+            color: white;
+        }
+
+        .process-description {
+            font-size: 14px;
+            color: #5A6C7D;
+            line-height: 1.5;
+        }
+
+        .process-step.highlight .process-description {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: #CBD5E0;
+            font-weight: 300;
+            margin: 0 16px;
+            align-self: center;
+        }
+
+        .value-proposition {
+            text-align: center;
+            max-width: 800px;
+            margin: 64px auto 0;
+            padding: 40px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 1px solid #E1E8ED;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .value-proposition h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1B365D;
+            margin-bottom: 16px;
+        }
+
+        .value-proposition p {
+            font-size: 16px;
+            color: #5A6C7D;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            background: #FFFFFF;
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .feature-card {
+            padding: 40px 32px;
+            border: 1px solid #E1E8ED;
+            border-radius: 12px;
+            background: #FAFBFC;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            background: #FFFFFF;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: #2E5BBA;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1B365D;
+        }
+
+        .feature-card p {
+            color: #5A6C7D;
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: #F8FAFB;
+            padding: 80px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 64px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 32px 24px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 1px solid #E1E8ED;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .benefit-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #2E5BBA, #1B365D);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 24px;
+        }
+
+        .benefit-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2E5BBA;
+            margin-bottom: 8px;
+        }
+
+        .benefit-item p {
+            color: #5A6C7D;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: #FFFFFF;
+            padding: 80px 0;
+        }
+
+        .pricing-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .pricing-card {
+            padding: 48px 40px;
+            border: 1px solid #E1E8ED;
+            border-radius: 12px;
+            background: #FAFBFC;
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: #1B365D;
+            color: white;
+            border-color: #1B365D;
+            transform: scale(1.05);
+            box-shadow: 0 16px 48px rgba(27, 54, 93, 0.2);
+        }
+
+        .pricing-card.featured::before {
+            content: "OFFRE EXCEPTIONNELLE";
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #E74C3C;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .pricing-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .pricing-card.featured .pricing-title {
+            color: white;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2E5BBA;
+            margin: 24px 0;
+            letter-spacing: -1px;
+        }
+
+        .pricing-card.featured .price {
+            color: white;
+        }
+
+        .pricing-description {
+            color: #5A6C7D;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .pricing-card.featured .pricing-description {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 24px;
+            color: #5A6C7D;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28A745;
+            font-weight: bold;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            color: #4ECDC4;
+        }
+
+        .pricing-note {
+            background: #FFF3CD;
+            border: 1px solid #FFEAA7;
+            color: #856404;
+            padding: 24px;
+            border-radius: 8px;
+            margin-top: 32px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Trust CTA Section */
+        .trust-cta {
+            background: linear-gradient(135deg, #F8FAFB 0%, #E8F4F8 100%);
+            padding: 80px 0;
+            border-top: 1px solid #E1E8ED;
+        }
+
+        .trust-cta-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1B365D;
+            margin-bottom: 16px;
+        }
+
+        .trust-subtitle {
+            font-size: 18px;
+            color: #5A6C7D;
+            margin-bottom: 48px;
+        }
+
+        .trust-elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .trust-element {
+            background: #FFFFFF;
+            padding: 32px 24px;
+            border-radius: 12px;
+            border: 1px solid #E1E8ED;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .trust-element:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .trust-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #2E5BBA, #1B365D);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px;
+        }
+
+        .trust-element h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1B365D;
+            margin-bottom: 12px;
+        }
+
+        .trust-element p {
+            color: #5A6C7D;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .trust-cta-actions {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .trust-cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2E5BBA, #1B365D);
+            color: white;
+            padding: 20px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(46, 91, 186, 0.3);
+            margin-bottom: 16px;
+            display: block;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+        }
+
+        .trust-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 91, 186, 0.4);
+        }
+
+        .trust-guarantee {
+            font-size: 14px;
+            color: #5A6C7D;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+
+        /* Target Section */
+        .target {
+            background: #F8FAFB;
+            padding: 80px 0;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .target-item {
+            text-align: center;
+            padding: 40px 32px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 1px solid #E1E8ED;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .target-icon {
+            width: 64px;
+            height: 64px;
+            background: #2E5BBA;
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 24px;
+        }
+
+        .target-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1B365D;
+            margin-bottom: 12px;
+        }
+
+        .target-item p {
+            color: #5A6C7D;
+            line-height: 1.5;
+        }
+
+        /* Not ERP Section */
+        .not-erp {
+            background: #1B365D;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .not-erp h2 {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .not-erp-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .not-erp p {
+            font-size: 18px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .not-erp .highlight {
+            color: #4ECDC4;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: #FFFFFF;
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #E1E8ED;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1B365D;
+            margin-bottom: 24px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: #5A6C7D;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2E5BBA;
+            color: white;
+            padding: 20px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(46, 91, 186, 0.3);
+            letter-spacing: -0.2px;
+        }
+
+        .cta-button:hover {
+            background: #1B365D;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 91, 186, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+                line-height: 1.1;
+            }
+
+            .hero .simple-explanation {
+                font-size: 16px;
+            }
+
+            .hero-button {
+                display: block;
+                margin-bottom: 16px;
+                margin-right: 0;
+            }
+
+            .trust-elements {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .trust-cta h2 {
+                font-size: 28px;
+            }
+
+            .trust-cta-button {
+                padding: 18px 32px;
+                font-size: 16px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+                align-items: center;
+            }
+
+            .stat-item {
+                min-width: 120px;
+            }
+
+            .process-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+                order: -1;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-  <!-- Slide 1: Vision -->
-  <section class="slide px-10 py-16">
-    <h1 class="text-4xl font-extrabold">FlowPay — Encaisser vite, avec preuve</h1>
-    <p class="mt-4 text-xl text-slate-700 max-w-3xl">SaaS d'automatisation de l'encaissement pour TPE/PME : e-factures <span class="font-semibold">Peppol</span>, relances intelligentes, vérification d'encaissement <span class="font-semibold">Open Banking</span>, paiement instantané, et preuves légales (<span class="font-semibold">LRE/horodatage qualifié</span>).</p>
-    <div class="mt-10 kpi">
-      <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200"><div class="text-3xl font-bold">DSO ↓</div><div class="text-slate-600">Réduction mesurable du délai moyen de paiement</div></div>
-      <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200"><div class="text-3xl font-bold">Preuve béton</div><div class="text-slate-600">eIDAS (LRE + timestamp qualifié) contre les litiges</div></div>
-      <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200"><div class="text-3xl font-bold">Cash prévisible</div><div class="text-slate-600">Relances + Pay‑by‑Bank + rapprochement bancaire auto</div></div>
-    </div>
-  </section>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">FlowPay</div>
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <span>🔒</span>
+                        Sécurisé
+                    </div>
+                    <div class="trust-item">
+                        <span>⚡</span>
+                        Facture électronique
+                    </div>
+                    <div class="trust-item">
+                        <span>✅</span>
+                        Conforme 2025
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- Slide 2: Problème -->
-  <section class="slide px-10 py-16">
-    <h2 class="text-3xl font-extrabold">Le problème</h2>
-    <ul class="mt-6 space-y-3 text-lg">
-      <li>• DSO élevé & retards chroniques → coût du capital et risque de trésorerie</li>
-      <li>• Litiges de “non‑réception” & relances non probantes (pixels ≠ valeur légale)</li>
-      <li>• Rapprochement bancaire manuel, lent et source d’erreurs</li>
-      <li>• Escalade (mise en demeure / LR) non outillée, affacturage déconnecté</li>
-    </ul>
-    <p class="mt-6 text-slate-600">Vent arrière réglementaire (e‑invoicing européen) et attente forte des cabinets comptables/PME.</p>
-  </section>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">🚨 Nouvelle loi 2025</div>
+                    
+                    <h1>Vos factures électroniques se paient toutes seules.</h1>
+                    
+                    <p class="simple-explanation">
+                        Automatisez vos devis, factures et relances — restez conforme à la loi et concentrez-vous sur votre métier.
+                    </p>
 
-  <!-- Slide 3: Solution -->
-<!-- Slide 3: Solution -->
-<section class="slide px-10 py-16">
-  <h2 class="text-3xl font-extrabold">La solution FlowCash</h2>
-  <div class="grid md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Chaîne complète</h3>
-      <ul class="mt-2 space-y-2">
-        <li>✔️ Emission/Réception e-factures <strong>Peppol</strong> (UBL/Factur-X)</li>
-        <li>✔️ Relances multi-étapes + <strong>Pay-by-Bank</strong></li>
-        <li>✔️ Vérification d’encaissement <strong>Open Banking (AIS)</strong></li>
-        <li>✔️ <strong>LRE</strong> & <strong>horodatage qualifié</strong> (eIDAS) en option</li>
-        <li>✔️ <strong>Affacturage intégré</strong> : bouton “Financer cette facture” sur créances éligibles</li>
-        <li>✔️ Journal d’audit scellé & export “dossier de preuve”</li>
-      </ul>
-    </div>
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Différenciation clé</h3>
-      <ul class="mt-2 space-y-2">
-        <li>• Focus <em>encaissement</em> (pas juste la facture)</li>
-        <li>• Preuve légale intégrée (eIDAS) → litiges réduits</li>
-        <li>• Tarifs simples + options à l’acte (coût perçu juste)</li>
-        <li>• <strong>Cash now</strong> via affacturage (améliore BFR sans changer de banque)</li>
-        <li>• Architecture évènementielle, intégrable (API/webhooks)</li>
-      </ul>
-    </div>
-  </div>
-</section>
+                    <div class="hero-cta">
+                        <a href="#demo" class="hero-button">Voir FlowPay en action</a>
+                    </div>
 
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">2x</span>
+                            <span class="stat-label">Plus rapide</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">✅</span>
+                            <span class="stat-label">Conforme 2025</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">89€</span>
+                            <span class="stat-label">À vie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- Slide 4: Modèle économique -->
-<section class="slide px-10 py-16">
-  <h2 class="text-3xl font-extrabold">Modèle économique</h2>
-  <div class="grid md:grid-cols-3 gap-6 mt-6">
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Abonnements (MRR)</h3>
-      <ul class="mt-2 space-y-2">
-        <li><strong>Basic</strong> 69 € — 200 docs/mois, 1 compte</li>
-        <li><strong>Pro</strong> 199 € — 1 000 docs/mois, 3 comptes</li>
-        <li><strong>Scale</strong> 499 € — 3 000 docs/mois, 5 comptes</li>
-        <li>Dépassements : 0,15 / 0,12 / 0,10 € par doc</li>
-      </ul>
-    </div>
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Options (upsell à l’usage)</h3>
-      <ul class="mt-2 space-y-2">
-        <li>LRE qualifiée : 5,90 € / envoi (packs dégressifs)</li>
-        <li>Horodatage qualifié : 0,49 € / évènement</li>
-        <li>Lettre recommandée papier : 9,90 € / envoi</li>
-      </ul>
-    </div>
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Affacturage (rev-share)</h3>
-<ul class="mt-2 space-y-2">
-  <li>Bouton “Financer cette facture” (éligibilité auto)</li>
-  <li>Rev-share sur frais du factor : <strong>10–30 %</strong></li>
-  <li>Ordre de grandeur : <em>~0,25–0,5 %</em> du montant financé</li>
-  <li>Impact financier : <strong>NRR+</strong> (revenu variable récurrent, marge élevée)</li>
-</ul>
+        <!-- Positioning Section -->
+        <section class="positioning">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Où se place FlowPay dans votre processus ?</h2>
+                    <p class="section-subtitle">FlowPay intervient précisément entre la création de vos factures et leur traitement comptable</p>
+                </div>
 
-    </div>
-  </div>
-  <div class="mt-6 grid md:grid-cols-3 gap-6">
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200 text-center"><div class="text-sm text-slate-500">Cohorte 50 clients (modèle)</div><div class="text-3xl font-bold mt-1">MRR ≈ 11,5 k€</div></div>
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200 text-center"><div class="text-sm text-slate-500">Marge brute (mix 25/20/5)</div><div class="text-3xl font-bold mt-1">≈ 50 %</div></div>
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200 text-center">
-  <div class="text-sm text-slate-500">Affacturage — revenu variable (rev-share)</div>
-  <div class="text-lg font-semibold mt-1">= Volume financé × frais × part revendue</div>
-  <div class="mt-2 text-slate-700">
-    <div>Ex. 100 k€ × 2,5 % × 20 % → <span class="font-bold">500 € / mois</span></div>
-    <div class="text-xs text-slate-500 mt-1">Contribue à la NRR (expansion), marge élevée</div>
-  </div>
-</div>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="process-icon">📊</div>
+                        <h3 class="process-title">Excel / Outils actuels</h3>
+                        <p class="process-description">Création de devis et factures</p>
+                    </div>
+                    
+                    <div class="flow-arrow">→</div>
+                    
+                    <div class="process-step highlight">
+                        <div class="process-icon">⚡</div>
+                        <h3 class="process-title">FlowPay</h3>
+                        <p class="process-description">Envoi automatique, relances, suivi et encaissement</p>
+                    </div>
+                    
+                    <div class="flow-arrow">→</div>
+                    
+                    <div class="process-step">
+                        <div class="process-icon">🏛️</div>
+                        <h3 class="process-title">Comptabilité / ERP</h3>
+                        <p class="process-description">Traitement comptable et déclaration</p>
+                    </div>
+                </div>
 
-  </div>
-</section>
+                <div class="value-proposition">
+                    <h3>FlowPay automatise tout ce qui se passe entre l'envoi et l'encaissement</h3>
+                    <p>Vous gardez votre liberté dans le choix de vos outils de facturation et de comptabilité, tout en accélérant significativement vos paiements et en réduisant les tâches administratives.</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Fonctionnalités professionnelles</h2>
+                    <p class="section-subtitle">Tous les outils nécessaires pour optimiser vos encaissements</p>
+                </div>
 
- <!-- Slide 5: Go-to-Market -->
-<section class="slide px-10 py-16">
-  <h2 class="text-3xl font-extrabold">Go-to-Market</h2>
-  <div class="grid md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Canaux</h3>
-      <ul class="mt-2 space-y-2">
-        <li>• Partenariats cabinets d’expertise comptable (revendeurs)</li>
-        <li>• Intégrateurs ERP/Compta (co-marketing)</li>
-        <li>• Ventes directes : démo 20 minutes orientée KPI</li>
-      </ul>
-      <h3 class="font-semibold mt-4">Partenaires affacturage</h3>
-      <ul class="mt-2 space-y-2">
-        <li>• Factors spécialisés PME (rev-share contractuel)</li>
-        <li>• Éligibilité auto sur données facture + historique paiement</li>
-      </ul>
-    </div>
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Parcours “Financer cette facture”</h3>
-      <ol class="mt-2 space-y-2 list-decimal list-inside">
-        <li>Sélection facture (montant, due-date, solvabilité client)</li>
-        <li>Éligibilité instantanée (score interne + règles partenaire)</li>
-        <li>Offre factor (frais, délais) → acceptation en 1 clic</li>
-        <li>Cession & décaissement → statut mis à jour dans FlowCash</li>
-      </ol>
-      <p class="mt-3 text-sm text-slate-600">KPIs : take-rate, volume financé/mois, revenu rev-share, satisfaction.</p>
-    </div>
-  </div>
-</section>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon">📨</div>
+                            <h3>Facture électronique obligatoire (ex-Peppol)</h3>
+                        </div>
+                        <p>Conformité automatique à la nouvelle loi européenne de facturation électronique. FlowPay envoie vos factures dans le bon format pour éviter les amendes.</p>
+                    </div>
 
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon">🔔</div>
+                            <h3>Relances automatiques</h3>
+                        </div>
+                        <p>Système de relances personnalisables à J+3, J+7, J+14. Fini les oublis, vos paiements sont suivis en permanence.</p>
+                    </div>
 
-  <!-- Slide 6: Traction & métriques -->
-<section class="slide px-10 py-16">
-  <h2 class="text-3xl font-extrabold">Traction & métriques</h2>
-  <div class="grid md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">Pilotes & KPIs cibles (90 jours)</h3>
-      <ul class="mt-2 space-y-2">
-        <li>• 25–30 clients pilotes (BE/FR)</li>
-        <li>• DSO clients pilotes : <strong>−10 jours</strong></li>
-        <li>• % paiements auto-matchés : <strong>≥ 90 %</strong></li>
-        <li>• GM moyenne : <strong>≥ 45 € / client / mois</strong></li>
-      </ul>
-    </div>
-    <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-      <h3 class="font-semibold">KPIs Affacturage</h3>
-      <ul class="mt-2 space-y-2">
-        <li>• <strong>Take-rate</strong> (factures présentant une offre / financées)</li>
-        <li>• <strong>Montant financé/mois</strong> (€, par secteur)</li>
-        <li>• <strong>Revenu rev-share</strong> (€/mois, % des frais)</li>
-        <li>• <strong>Time-to-cash</strong> post-cession (jours)</li>
-      </ul>
-    </div>
-  </div>
-</section>
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon">👁️</div>
+                            <h3>Suivi automatique</h3>
+                        </div>
+                        <p>Tous les jours, on vérifie le statut de vos factures sur Peppol et on vous avertit. Fini les surprises, vous savez tout en temps réel.</p>
+                    </div>
 
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon">💳</div>
+                            <h3>Paiement en ligne sécurisé</h3>
+                        </div>
+                        <p>Intégration avec les principales passerelles de paiement (Stripe, etc.) pour faciliter l'encaissement immédiat.</p>
+                    </div>
 
-  <!-- Slide 7: Roadmap -->
-  <section class="slide px-10 py-16">
-    <h2 class="text-3xl font-extrabold">Roadmap 0–90 jours</h2>
-    <ol class="mt-6 space-y-3 text-lg">
-      <li><strong>J0–30</strong> — MVP : AP Peppol + AIS + relances + Pay‑by‑Bank + journal de preuve (LRE/TSA intégrés)</li>
-      <li><strong>J31–60</strong> — Pilotes (10–20) ; packs LRE/QTS ; métriques en prod ; négociation AP (paliers)</li>
-      <li><strong>J61–90</strong> — Connecteurs compta majeurs ; bouton affacturage ; offre Entreprise</li>
-    </ol>
-    <p class="mt-6 text-slate-600">Garde‑fous : multi‑fournisseurs, plafonds contractuels, export & réversibilité.</p>
-  </section>
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon">📤</div>
+                            <h3>Export comptable automatisé</h3>
+                        </div>
+                        <p>Formats UBL, CSV, Peppol prêts à l'import dans votre solution comptable. Données propres garanties.</p>
+                    </div>
 
-  <!-- Slide 8: Besoins & partenariat -->
-  <section class="slide px-10 py-16">
-    <h2 class="text-3xl font-extrabold">Besoins & partenariat</h2>
-    <div class="grid md:grid-cols-2 gap-6 mt-6">
-      <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-<h3 class="font-semibold">Partenaires recherchés</h3>
-<ul class="mt-2 space-y-2">
-  <li>• AP Peppol, AIS Open Banking, LRE, TSA (terms : export, plafonds, SLA)</li>
-  <li>• Cabinets comptables (revendeur / co-branding)</li>
-  <li>• <strong>Affacturage</strong> : factors PME → <em>rev-share 10–30 %</em> des frais</li>
-</ul>
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Déploiement rapide</h3>
+                        </div>
+                        <p>Interface intuitive, configuration en 15 minutes. Aucune formation technique requise.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      </div>
-      <div class="bg-white rounded-2xl p-6 ring-1 ring-slate-200">
-        <h3 class="font-semibold">Financement (scénarios)</h3>
-        <ul class="mt-2 space-y-2">
-          <li><strong>Bootstrapped</strong> — 0–50 k€ (setup vendors, ventes initiales)</li>
-          <li><strong>Seed ciblée</strong> — 200–300 k€ pour 12–18 mois de runway (tech, GTM, connecteurs)</li>
-          <li>Objectif 12 mois : 200+ clients, MRR ≥ 40 k€, GM ≥ 55 %</li>
-        </ul>
-      </div>
-    </div>
-    <p class="mt-6 text-slate-600">Contact : <span class="font-semibold">Benoit — Fondateur</span> • Demo & datas sur demande</p>
-  </section>
-  
-  
-  <!-- === Slide Deck: CSS + JS (no deps) === -->
-<style id="slides-css">
-  html.js-slides, html.js-slides body{height:100%;overflow:hidden}
-  html.js-slides .slide{display:none}
-  html.js-slides .slide.active{display:flex}
-  #deckHUD{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
-    background:rgba(15,23,42,.85);color:#fff;border-radius:9999px;
-    padding:.4rem .75rem;font:500 12px/1.3 Inter,system-ui,Segoe UI,Roboto,Arial}
-  #deckHUD .btn{cursor:pointer;margin:0 .5rem;user-select:none}
-  #deckProg{position:fixed;left:0;right:0;bottom:0;height:3px;background:rgba(2,8,23,.15)}
-  #deckProg>i{display:block;height:100%;width:0;background:#16a34a;transition:width .2s ease}
-</style>
-<script>
-(function(){
-  const slides=[...document.querySelectorAll('.slide')];
-  if(!slides.length) return;
-  document.documentElement.classList.add('js-slides');
+        <!-- Benefits Section -->
+        <section class="benefits">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Résultats mesurables</h2>
+                    <p class="section-subtitle">Des bénéfices concrets pour votre activité</p>
+                </div>
 
-  // Go to slide from hash (#1, #2, ...)
-  let idx=0;
-  function fromHash(){
-    const n=parseInt(location.hash.replace('#',''),10);
-    if(!isNaN(n) && n>=1 && n<=slides.length) idx=n-1;
-  }
-  fromHash();
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚀</div>
+                        <h3>-50%</h3>
+                        <p>Délais d'encaissement réduits</p>
+                    </div>
 
-  // Create HUD (controls + progress)
-  const hud=document.createElement('div');
-  hud.id='deckHUD';
-  hud.innerHTML=`<span class="btn" id="prevBtn">◀</span>
-                 <span id="hudCount">1/${slides.length}</span>
-                 <span class="btn" id="nextBtn">▶</span>
-                 <span class="btn" title="Fullscreen (F)" id="fsBtn">⛶</span>
-                 <span class="btn" title="Scroll mode (S)" id="scrollBtn">↕</span>`;
-  document.body.appendChild(hud);
-  const hudCount=document.getElementById('hudCount');
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏱️</div>
+                        <h3>0</h3>
+                        <p>Relance oubliée</p>
+                    </div>
 
-  const prog=document.createElement('div');
-  prog.id='deckProg'; prog.innerHTML='<i></i>';
-  document.body.appendChild(prog);
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💡</div>
+                        <h3>15min</h3>
+                        <p>Mise en place complète</p>
+                    </div>
 
-  function show(i){
-    idx=(i+slides.length)%slides.length;
-    slides.forEach((s,k)=>s.classList.toggle('active',k===idx));
-    hudCount.textContent=`${idx+1}/${slides.length}`;
-    prog.firstElementChild.style.width=((idx+1)/slides.length*100)+'%';
-    history.replaceState(null,'','#'+(idx+1));
-  }
-  function next(){ show(idx+1); }
-  function prev(){ show(idx-1); }
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📊</div>
+                        <h3>100%</h3>
+                        <p>Données comptables conformes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  window.addEventListener('keydown',e=>{
-    const tag=(document.activeElement||{}).tagName||'';
-    if(['INPUT','TEXTAREA','SELECT'].includes(tag)) return;
-    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); next(); }
-    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prev(); }
-    else if(e.key==='Home'){ show(0); }
-    else if(e.key==='End'){ show(slides.length-1); }
-    else if(e.key.toLowerCase()==='f'){ toggleFS(); }
-    else if(e.key.toLowerCase()==='s'){ toggleScroll(); }
-  });
-  window.addEventListener('hashchange',()=>{ fromHash(); show(idx); });
+        <!-- Pricing Section -->
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="pricing-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Tarification transparente</h2>
+                        <p class="section-subtitle">Un investissement maîtrisé pour votre croissance</p>
+                    </div>
 
-  function toggleFS(){
-    const d=document, el=d.documentElement;
-    if(!d.fullscreenElement){ (el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen||el.mozRequestFullScreen).call(el); }
-    else { (d.exitFullscreen||d.webkitExitFullscreen||d.msExitFullscreen||d.mozCancelFullScreen).call(d); }
-  }
-  function toggleScroll(){
-    const root=document.documentElement;
-    if(root.classList.contains('js-slides')){
-      root.classList.remove('js-slides'); slides.forEach(s=>s.classList.add('active'));
-    } else {
-      root.classList.add('js-slides'); show(idx); window.scrollTo(0,0);
-    }
-  }
-  document.getElementById('prevBtn').onclick=prev;
-  document.getElementById('nextBtn').onclick=next;
-  document.getElementById('fsBtn').onclick=toggleFS;
-  document.getElementById('scrollBtn').onclick=toggleScroll;
+                    <div class="pricing-cards">
+                        <div class="pricing-card">
+                            <h3 class="pricing-title">Abonnement Standard</h3>
+                            <div class="price">Bientôt</div>
+                            <p class="pricing-description">Facturation mensuelle après la période de lancement</p>
+                            <ul class="pricing-features">
+                                <li>Toutes les fonctionnalités</li>
+                                <li>Support client</li>
+                                <li>Mises à jour incluses</li>
+                                <li>Formation en ligne</li>
+                            </ul>
+                            <p style="color: #5A6C7D; font-style: italic;">À partir de XX €/mois</p>
+                        </div>
 
-  // First render
-  show(idx);
-})();
-</script>
-<!-- === /Slide Deck === -->
+                        <div class="pricing-card featured">
+                            <h3 class="pricing-title">Accès à Vie</h3>
+                            <div class="price">89€</div>
+                            <p class="pricing-description">Paiement unique, accès permanent à toutes les fonctionnalités actuelles et futures</p>
+                            <ul class="pricing-features">
+                                <li>Accès à vie garanti</li>
+                                <li>Toutes les fonctionnalités</li>
+                                <li>Mises à jour à vie incluses</li>
+                                <li>Nouvelles fonctionnalités incluses</li>
+                                <li>Support prioritaire</li>
+                                <li>Formation personnalisée</li>
+                            </ul>
+                        </div>
+                    </div>
 
+                    <div class="pricing-note">
+                        <strong>Offre de lancement limitée dans le temps.</strong> Profitez du tarif exceptionnel à vie avant le passage au modèle d'abonnement. Cette opportunité ne se représentera plus.
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Trust CTA Section -->
+        <section class="trust-cta">
+            <div class="container">
+                <div class="trust-cta-content">
+                    <h2>Rejoignez FlowPay en toute confiance</h2>
+                    <p class="trust-subtitle">Vos données et vos paiements sont entre de bonnes mains</p>
+                    
+                    <div class="trust-elements">
+                        <div class="trust-element">
+                            <div class="trust-icon">🇧🇪</div>
+                            <h3>Données hébergées en Belgique</h3>
+                            <p>Conformité RGPD européenne, aucun transfert hors UE</p>
+                        </div>
+                        
+                        <div class="trust-element">
+                            <div class="trust-icon">🔒</div>
+                            <h3>Sécurité bancaire</h3>
+                            <p>Chiffrement SSL, certification PCI-DSS pour les paiements</p>
+                        </div>
+                        
+                        <div class="trust-element">
+                            <div class="trust-icon">✅</div>
+                            <h3>Conforme facture électronique</h3>
+                            <p>Respect automatique de la nouvelle loi européenne, aucun risque d'amende</p>
+                        </div>
+                        
+                        <div class="trust-element">
+                            <div class="trust-icon">📞</div>
+                            <h3>Support français</h3>
+                            <p>Équipe francophone, réponse sous 24h maximum</p>
+                        </div>
+                        
+                        <div class="trust-element">
+                            <div class="trust-icon">💰</div>
+                            <h3>Paiement unique sécurisé</h3>
+                            <p>Aucun abonnement caché, accès à vie garanti</p>
+                        </div>
+                        
+                        <div class="trust-element">
+                            <div class="trust-icon">🛡️</div>
+                            <h3>Garantie 30 jours</h3>
+                            <p>Pas satisfait ? Remboursement intégral sans question</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-cta-actions">
+                        <a href="#signup" class="trust-cta-button">Sécuriser mon accès à vie - 89€</a>
+                        <p class="trust-guarantee">✅ Paiement sécurisé • 🔄 Garantie 30 jours • 🇫🇷 Support français</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Target Section -->
+        <section class="target">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Conçu pour les professionnels</h2>
+                    <p class="section-subtitle">FlowPay s'adapte parfaitement à votre structure</p>
+                </div>
+
+                <div class="target-grid">
+                    <div class="target-item">
+                        <div class="target-icon">👨‍💼</div>
+                        <h3>Indépendants & Consultants</h3>
+                        <p>Freelances, consultants, professions libérales qui veulent optimiser leur trésorerie</p>
+                    </div>
+
+                    <div class="target-item">
+                        <div class="target-icon">🔨</div>
+                        <h3>Artisans</h3>
+                        <p>Professionnels du bâtiment, artisans d'art, métiers manuels nécessitant un suivi rigoureux</p>
+                    </div>
+
+                    <div class="target-item">
+                        <div class="target-icon">🏢</div>
+                        <h3>TPE (1-10 salariés)</h3>
+                        <p>Petites entreprises qui ont besoin d'efficacité sans la complexité d'un grand ERP</p>
+                    </div>
+
+                    <div class="target-item">
+                        <div class="target-icon">📊</div>
+                        <h3>Cabinets comptables</h3>
+                        <p>Experts-comptables souhaitant fluidifier la collecte de données clients</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Not ERP Section -->
+        <section class="not-erp">
+            <div class="container">
+                <div class="not-erp-content">
+                    <h2>Volontairement pas un ERP</h2>
+                    <p>FlowPay ne remplace pas votre système comptable complet.</p>
+                    <p>Il excelle dans son domaine : <span class="highlight">l'automatisation de l'encaissement entre la facturation et la comptabilité</span>.</p>
+                    <p>Vous conservez votre liberté de choix pour la comptabilité, tout en bénéficiant d'une accélération significative de vos paiements.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta" id="demo">
+            <div class="container">
+                <h2>Accélérez vos encaissements dès aujourd'hui</h2>
+                <p>Rejoignez les professionnels qui ont déjà choisi FlowPay pour optimiser leur trésorerie et gagner du temps sur leurs tâches administratives.</p>
+                <a href="mailto:contact@flowpay.com?subject=Demande%20d'accès%20FlowPay" class="cta-button">Demander un accès - 89€</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #1B365D; color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2025 FlowPay. Tous droits réservés.</p>
+            <p style="margin-top: 8px; font-size: 14px; opacity: 0.8;">Automatisez vos encaissements, restez conformes.</p>
+        </div>
+    </footer>
 </body>
 </html>
